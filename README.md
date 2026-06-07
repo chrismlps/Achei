@@ -262,17 +262,4 @@ achados-e-perdidos/
 ├── requirements.txt            # Lista de dependências Python
 └── README.md                   # Este arquivo
 ```
-
-### Descrição das pastas principais
-
-- **`app/`** — contém todo o código-fonte da aplicação Flask organizado por responsabilidade (modelos, rotas e templates).
-- **`app/models/`** — define as tabelas do banco de dados como classes Python usando SQLAlchemy.
-- **`app/routes/`** — implementa as rotas HTTP (GET, POST, PUT, DELETE) e a lógica de cada funcionalidade.
-- **`app/templates/`** — páginas HTML renderizadas pelo servidor usando o motor de templates Jinja2 do Flask.
-- **`app/static/`** — arquivos CSS e JavaScript enviados diretamente ao navegador.
-- **`tests/`** — testes de unidade com pytest e testes de caixa preta com Selenium, organizados em subpastas separadas.
-- **`docs/`** — documentação técnica: requisitos, diagramas e casos de uso produzidos durante o processo de desenvolvimento.
-- **`config.py`** — centraliza as configurações do projeto (URL do banco, chave secreta, modo debug).
-- **`run.py`** — script de entrada que inicializa e executa o servidor Flask.
-
 ---
