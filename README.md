@@ -10,7 +10,7 @@ O **Achei!** é um sistema web que centraliza o processo de registro e devoluç�
 
 - **Quem perde** um item pode cadastrá-lo no sistema com descrição, categoria e situação, facilitando a busca.
 - **Quem encontra** pode registrar o item e informar em qual posto de apoio (Cantina, Biblioteca, Portaria Central etc.) ele foi entregue.
-- **A retirada** é formalizada com um Termo de Retirada que gera um código de verificação, garantindo segurança na devolução.
+- **A retirada** é formalizada com um Termo de Retirada registrando o CPF e assinatura do retirante, garantindo fidelidade na devolução.
 - **Gestores** podem cadastrar e gerenciar os postos de apoio disponíveis no campus.
 
 O sistema requer login de usuário (alunos, funcionários, etc) e oferece operações completas de cadastro, consulta, edição e exclusão (CRUD) tanto para os postos de apoio quanto para o registro completo de devolução de itens.
