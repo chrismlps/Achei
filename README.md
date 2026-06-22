@@ -165,7 +165,119 @@ O arquivo `.gitignore` será usado para impedir que arquivos desnecessários sej
 
 ## 3. Instruções para Devs
 
-> Será preenchido durante o desenvolvimento!
+# Boas Práticas de Codificação
+
+Para garantir a legibilidade, organização e manutenção do código, o grupo deverá seguir as seguintes boas práticas durante o desenvolvimento do sistema.
+
+## 3.1. Indentar corretamente o código
+
+A indentação será usada para organizar visualmente o código e deixar claros os blocos de comandos, como estruturas `if`, `else`, `while`, `for`, funções e classes.
+
+Um código bem indentado facilita a leitura, ajuda a identificar o escopo de cada instrução e reduz a chance de erros durante a manutenção.
+
+Exemplo:
+
+```python
+if usuario_logado:
+    listar_itens_perdidos()
+else:
+    exibir_tela_login()
+```
+
+## 3.2. Nomear variáveis de maneira intuitiva
+
+As variáveis deverão possuir nomes claros e relacionados ao seu significado dentro do sistema. O grupo deverá evitar nomes genéricos ou sem sentido, como `x`, `y`, `a1` ou `array1`, quando eles não representarem bem a informação armazenada.
+
+Exemplo inadequado:
+
+```python
+x = "Pedro"
+```
+
+Exemplo adequado:
+
+```python
+nome_usuario = "Pedro"
+```
+
+Essa prática facilita o entendimento do código por qualquer integrante do grupo.
+
+## 3.3. Evitar condições negativas desnecessárias no `if`
+
+Sempre que possível, as condições deverão ser escritas de forma positiva, verificando primeiro a situação verdadeira e deixando a situação alternativa para o `else`.
+
+Isso torna o código mais direto e evita confusão, principalmente em estruturas condicionais maiores ou aninhadas.
+
+Exemplo menos legível:
+
+```python
+if not usuario_ativo:
+    bloquear_acesso()
+else:
+    liberar_acesso()
+```
+
+Exemplo mais legível:
+
+```python
+if usuario_ativo:
+    liberar_acesso()
+else:
+    bloquear_acesso()
+```
+
+## 3.4. Nomear funções de maneira intuitiva
+
+As funções deverão ter nomes que indiquem claramente a ação realizada. O nome da função deve ajudar a entender sua finalidade sem que seja necessário analisar todo o seu conteúdo.
+
+Exemplos:
+
+```python
+cadastrar_item_perdido()
+listar_postos_apoio()
+validar_email()
+gerar_termo_retirada()
+```
+
+Funções que retornam valores booleanos também deverão ter nomes claros, indicando uma verificação.
+
+Exemplos:
+
+```python
+email_valido()
+usuario_ativo()
+item_disponivel()
+```
+
+## 3.5. Comentar e documentar o código quando necessário
+
+O código deverá conter comentários em trechos importantes, principalmente quando houver regras de negócio, validações ou lógicas mais complexas.
+
+Comentários não devem ser usados para explicar comandos óbvios, mas sim para esclarecer a intenção de uma regra ou funcionamento.
+
+Exemplo adequado:
+
+```python
+# Verifica se o item já foi retirado antes de permitir nova retirada
+if item.retirado:
+    return "Item indisponível"
+```
+
+Além dos comentários, nomes claros de variáveis, funções e classes também serão usados como forma de tornar o código mais autoexplicativo.
+
+## 3.6. Padronizar nomes de constantes
+
+As constantes deverão seguir um padrão de nomenclatura para serem facilmente identificadas no código. O grupo adotará nomes em letras maiúsculas, separando palavras com underline.
+
+Exemplos:
+
+```python
+MAX_TENTATIVAS_LOGIN = 3
+STATUS_ITEM_DISPONIVEL = "disponivel"
+STATUS_ITEM_RETIRADO = "retirado"
+```
+
+Essa prática ajuda a diferenciar valores fixos de variáveis comuns, facilitando a leitura e a manutenção do sistema.
 
 ---
 
