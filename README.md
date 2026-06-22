@@ -19,7 +19,7 @@ O sistema requer login de usuário (alunos, funcionários, etc) e oferece opera�
 
 ---
 
-## 2. Instruções para Uso do Git
+# 2. Instruções para Uso do Git
 
 ## 2.1. Estrutura de Pastas do Projeto
 
@@ -163,13 +163,13 @@ O arquivo `.gitignore` será usado para impedir que arquivos desnecessários sej
 
 ---
 
-## 3. Instruções para Devs
+# 3. Instruções para Devs
 
-# Boas Práticas de Codificação
+## Boas Práticas de Codificação
 
 Para garantir a legibilidade, organização e manutenção do código, o grupo deverá seguir as seguintes boas práticas durante o desenvolvimento do sistema.
 
-## 3.1. Indentar corretamente o código
+### 3.1. Indentar corretamente o código
 
 A indentação será usada para organizar visualmente o código e deixar claros os blocos de comandos, como estruturas `if`, `else`, `while`, `for`, funções e classes.
 
@@ -184,7 +184,7 @@ else:
     exibir_tela_login()
 ```
 
-## 3.2. Nomear variáveis de maneira intuitiva
+### 3.2. Nomear variáveis de maneira intuitiva
 
 As variáveis deverão possuir nomes claros e relacionados ao seu significado dentro do sistema. O grupo deverá evitar nomes genéricos ou sem sentido, como `x`, `y`, `a1` ou `array1`, quando eles não representarem bem a informação armazenada.
 
@@ -202,7 +202,7 @@ nome_usuario = "Pedro"
 
 Essa prática facilita o entendimento do código por qualquer integrante do grupo.
 
-## 3.3. Evitar condições negativas desnecessárias no `if`
+### 3.3. Evitar condições negativas desnecessárias no `if`
 
 Sempre que possível, as condições deverão ser escritas de forma positiva, verificando primeiro a situação verdadeira e deixando a situação alternativa para o `else`.
 
@@ -226,7 +226,7 @@ else:
     bloquear_acesso()
 ```
 
-## 3.4. Nomear funções de maneira intuitiva
+### 3.4. Nomear funções de maneira intuitiva
 
 As funções deverão ter nomes que indiquem claramente a ação realizada. O nome da função deve ajudar a entender sua finalidade sem que seja necessário analisar todo o seu conteúdo.
 
@@ -249,7 +249,7 @@ usuario_ativo()
 item_disponivel()
 ```
 
-## 3.5. Comentar e documentar o código quando necessário
+### 3.5. Comentar e documentar o código quando necessário
 
 O código deverá conter comentários em trechos importantes, principalmente quando houver regras de negócio, validações ou lógicas mais complexas.
 
@@ -265,7 +265,7 @@ if item.retirado:
 
 Além dos comentários, nomes claros de variáveis, funções e classes também serão usados como forma de tornar o código mais autoexplicativo.
 
-## 3.6. Padronizar nomes de constantes
+### 3.6. Padronizar nomes de constantes
 
 As constantes deverão seguir um padrão de nomenclatura para serem facilmente identificadas no código. O grupo adotará nomes em letras maiúsculas, separando palavras com underline.
 
@@ -281,7 +281,7 @@ Essa prática ajuda a diferenciar valores fixos de variáveis comuns, facilitand
 
 ---
 
-## 4. Tecnologias
+# 4. Tecnologias
 
 ### Frontend
 
@@ -316,13 +316,13 @@ Essa prática ajuda a diferenciar valores fixos de variáveis comuns, facilitand
 
 ---
 
-## 5. Organização do Projeto
+# 5. Organização do Projeto
 
 > Será preenchido durante o desenvolvimento!
 
 ---
 
-## 6. Equipe
+# 6. Equipe
 
 * Christian Miguel Lopes
 * José Geraldo Caria da Silva
