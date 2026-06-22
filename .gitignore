@@ -1,0 +1,55 @@
+```gitignore id="b14s3q"
+# Ambiente virtual Python
+venv/
+.venv/
+env/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos de ambiente
+.env
+.env.local
+
+# Banco de dados local SQLite
+*.sqlite
+*.sqlite3
+*.db
+
+# Migrações/cache locais, caso sejam geradas
+instance/
+.webassets-cache
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+
+# Arquivos de build/distribuição Python
+build/
+dist/
+*.egg-info/
+
+# Testes e cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Configurações locais de IDE/editor
+.vscode/
+.idea/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos compilados/executáveis
+*.exe
+*.out
+*.o
+```
