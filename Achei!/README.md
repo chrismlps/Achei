@@ -24,7 +24,7 @@ A versão inclui:
 Entre na pasta do projeto e rode:
 
 ```cmd
-py -m venv .venv
+python -m venv .venv
 .venv\Scripts\activate.bat
 pip install -r requirements.txt
 .venv\Scripts\python.exe -m uvicorn app.main:app --reload
@@ -48,16 +48,15 @@ Com o backend já ligado, abra outro terminal:
 
 ```cmd
 cd frontend
-py -m http.server 5500
+python -m http.server 5500
 ```
 
 Depois acesse:
 
 ```text
 http://127.0.0.1:5500
+ou diretamente o arquivo `frontend/index.html`
 ```
-
-Também é possível abrir diretamente o arquivo `frontend/index.html`, mas o servidor local é mais recomendado.
 
 ## Permissões por perfil
 
