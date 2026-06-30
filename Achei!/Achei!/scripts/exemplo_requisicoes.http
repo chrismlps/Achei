@@ -1,0 +1,54 @@
+### Health check
+GET http://127.0.0.1:8000/health
+
+### Criar posto
+POST http://127.0.0.1:8000/postos
+Content-Type: application/json
+
+{
+  "nome": "Biblioteca Central",
+  "local": "Prédio da Biblioteca",
+  "horario": "08h às 22h"
+}
+
+### Listar postos
+GET http://127.0.0.1:8000/postos
+
+### Registrar item entregue em posto
+POST http://127.0.0.1:8000/itens/entregues
+Content-Type: application/json
+
+{
+  "descricao": "Chave com chaveiro azul",
+  "categoria": "Chave",
+  "id_posto": 1
+}
+
+### Listar itens disponíveis
+GET http://127.0.0.1:8000/itens/disponiveis
+
+### Registrar retirada
+POST http://127.0.0.1:8000/retiradas
+Content-Type: application/json
+
+{
+  "id_item": 1,
+  "id_posto": 1,
+  "cpf_retirante": "12345678901",
+  "email_retirante": "aluno@ufla.br"
+}
+
+### Consultar histórico de retiradas
+GET http://127.0.0.1:8000/retiradas
+
+### Atualizar dados documentais do termo
+PUT http://127.0.0.1:8000/retiradas/1
+Content-Type: application/json
+
+{
+  "cpf_retirante": "10987654321",
+  "email_retirante": "corrigido@ufla.br"
+}
+
+### Excluir termo, revertendo item para Disponível para Retirada
+DELETE http://127.0.0.1:8000/retiradas/1

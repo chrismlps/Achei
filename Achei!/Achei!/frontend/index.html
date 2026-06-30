@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Achei! | Achados e Perdidos</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <section id="toast" class="toast hidden" role="status"></section>
+
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="login-hero">
+        <div class="brand-row">
+          <div class="brand-mark">A!</div>
+          <div>
+            <strong>Achei!</strong>
+            <span>Achados e Perdidos</span>
+          </div>
+        </div>
+        <h1>Entre no sistema</h1>
+        <p>Use um dos perfis de demonstração para acessar somente as funcionalidades permitidas para Aluno, Funcionário ou Administrador.</p>
+        <div class="demo-users" aria-label="Usuários de demonstração">
+          <button class="demo-user" type="button" data-email="aluno@achei.com" data-senha="aluno123">Aluno</button>
+          <button class="demo-user" type="button" data-email="funcionario@achei.com" data-senha="func123">Funcionário</button>
+          <button class="demo-user" type="button" data-email="admin@achei.com" data-senha="admin123">Administrador</button>
+        </div>
+      </div>
+
+      <form id="formLogin" class="login-form">
+        <label>
+          E-mail
+          <input id="loginEmail" type="email" value="admin@achei.com" required />
+        </label>
+        <label>
+          Senha
+          <input id="loginSenha" type="password" value="admin123" required />
+        </label>
+        <label>
+          Backend
+          <input id="apiBase" type="url" value="http://127.0.0.1:8000" required />
+        </label>
+        <button class="btn primary wide" type="submit">Entrar</button>
+        <button id="btnTestarApi" class="btn ghost wide" type="button">Testar conexão com API</button>
+        <small id="apiStatus">Aguardando conexão.</small>
+      </form>
+    </div>
+  </section>
+
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">A!</div>
+        <div>
+          <strong>Achei!</strong>
+          <span>Achados e Perdidos</span>
+        </div>
+      </div>
+
+      <div class="user-card">
+        <span>Usuário logado</span>
+        <strong id="userName">—</strong>
+        <small id="userRole">—</small>
+      </div>
+
+      <nav class="nav" aria-label="Menu principal">
+        <button class="nav-link active" data-view="dashboard">Início</button>
+        <button class="nav-link" data-view="postos" data-view-permission="rf03">Postos de Apoio</button>
+        <button class="nav-link" data-view="itens" data-view-permission="rf11">Itens</button>
+        <button class="nav-link" data-view="retiradas" data-view-permission="rf07">Retiradas</button>
+        <button class="nav-link" data-view="relatorios" data-view-permission="rf12">Relatório por Posto</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="btnSair" class="btn ghost wide" type="button">Sair</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Sistema web universitário</p>
+          <h1 id="pageTitle">Achei!</h1>
+        </div>
+        <button id="btnAtualizarTudo" class="btn secondary" type="button">Atualizar dados</button>
+      </header>
+
+      <section id="dashboard" class="view active-view">
+        <div class="hero-card">
+          <div>
+            <p class="eyebrow">Controle centralizado</p>
+            <h2>Achei!</h2>
+            <p>Registro e devolução de itens perdidos em campus universitário.</p>
+          </div>
+          <div class="hero-badge">Login por perfil</div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>Postos</span><strong id="statPostos">0</strong></article>
+          <article class="stat-card"><span>Itens</span><strong id="statItens">0</strong></article>
+          <article class="stat-card"><span>Disponíveis</span><strong id="statDisponiveis">0</strong></article>
+          <article class="stat-card"><span>Retiradas</span><strong id="statRetiradas">0</strong></article>
+        </div>
+
+        <div class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">Permissões do perfil atual</p>
+            <h2>Funcionalidades liberadas</h2>
+          </div>
+          <div id="permissionCards" class="permission-grid"></div>
+        </div>
+      </section>
+
+      <section id="postos" class="view">
+        <div class="section-grid">
+          <article class="panel form-card" data-permission="rf02">
+            <div class="section-heading">
+              <p class="eyebrow">RF02 / RF04</p>
+              <h2 id="postoFormTitle">Cadastrar posto</h2>
+            </div>
+            <form id="formPosto">
+              <input id="postoId" type="hidden" />
+              <label>Nome<input id="postoNome" maxlength="100" required placeholder="Biblioteca Central" /></label>
+              <label>Local<input id="postoLocal" maxlength="150" required placeholder="Prédio da Biblioteca" /></label>
+              <label>Horário<input id="postoHorario" maxlength="50" required placeholder="08h às 22h" /></label>
+              <div class="form-actions">
+                <button class="btn primary" type="submit">Salvar posto</button>
+                <button id="btnCancelarPosto" class="btn ghost hidden" type="button">Cancelar</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="panel table-panel wide-panel">
+            <div class="section-heading row-heading">
+              <div>
+                <p class="eyebrow">RF03</p>
+                <h2>Consultar postos de apoio</h2>
+              </div>
+              <button class="btn secondary" data-refresh="postos" type="button">Atualizar</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>ID</th><th>Nome</th><th>Local</th><th>Horário</th><th>Itens disponíveis</th><th>Ações</th></tr></thead>
+                <tbody id="postosTabela"></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="itens" class="view">
+        <div class="cards-forms">
+          <article class="panel" data-permission="rf10">
+            <div class="section-heading">
+              <p class="eyebrow">RF10</p>
+              <h2>Registrar item perdido</h2>
+            </div>
+            <form id="formItemPerdido">
+              <label>Descrição<textarea id="itemPerdidoDescricao" required placeholder="Ex.: Caderno azul com adesivo"></textarea></label>
+              <label>Categoria<input id="itemPerdidoCategoria" required placeholder="Documento, Chave, Eletrônico..." /></label>
+              <button class="btn primary" type="submit">Registrar perda</button>
+            </form>
+          </article>
+
+          <article class="panel" data-permission="rf14">
+            <div class="section-heading">
+              <p class="eyebrow">RF14</p>
+              <h2>Registrar entrega em posto</h2>
+            </div>
+            <form id="formItemEntregue">
+              <label>Descrição<textarea id="itemEntregueDescricao" required placeholder="Ex.: Chave com chaveiro azul"></textarea></label>
+              <label>Categoria<input id="itemEntregueCategoria" required placeholder="Chave" /></label>
+              <label>Posto de apoio<select id="itemEntreguePosto" required></select></label>
+              <button class="btn primary" type="submit">Registrar entrega</button>
+            </form>
+          </article>
+        </div>
+
+        <article class="panel table-panel">
+          <div class="section-heading row-heading">
+            <div>
+              <p class="eyebrow">RF11 / RF13 / RF15</p>
+              <h2>Consultar itens</h2>
+            </div>
+            <button class="btn secondary" data-refresh="itens" type="button">Atualizar</button>
+          </div>
+          <div class="filters">
+            <label>Status
+              <select id="filtroStatus">
+                <option value="">Todos</option>
+                <option value="Perdido">Perdidos</option>
+                <option value="Disponível para Retirada">Disponíveis para retirada</option>
+                <option value="Retornado">Retornados</option>
+              </select>
+            </label>
+            <label>Posto
+              <select id="filtroPosto"></select>
+            </label>
+          </div>
+          <div class="quick-filters">
+            <button class="btn small ghost" type="button" data-status-quick="Perdido">Ver perdidos</button>
+            <button class="btn small ghost" type="button" data-status-quick="Disponível para Retirada">Ver disponíveis</button>
+            <button class="btn small ghost" type="button" data-status-quick="">Ver todos</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Descrição</th><th>Categoria</th><th>Status</th><th>Posto</th><th>Ações</th></tr></thead>
+              <tbody id="itensTabela"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="retiradas" class="view">
+        <div class="section-grid">
+          <article class="panel form-card" data-permission="rf06">
+            <div class="section-heading">
+              <p class="eyebrow">RF06</p>
+              <h2>Registrar termo de retirada</h2>
+            </div>
+            <form id="formRetirada">
+              <label>Item disponível<select id="retiradaItem" required></select></label>
+              <label>Posto vinculado<select id="retiradaPosto" required></select></label>
+              <label>CPF do retirante<input id="retiradaCpf" inputmode="numeric" required placeholder="12345678901" /></label>
+              <label>E-mail do retirante<input id="retiradaEmail" type="email" required placeholder="aluno@ufla.br" /></label>
+              <button class="btn primary" type="submit">Finalizar retirada</button>
+            </form>
+          </article>
+
+          <article class="panel table-panel wide-panel">
+            <div class="section-heading row-heading">
+              <div>
+                <p class="eyebrow">RF07 / RF08 / RF09</p>
+                <h2>Histórico de termos</h2>
+              </div>
+              <button class="btn secondary" data-refresh="retiradas" type="button">Atualizar</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>ID</th><th>Item</th><th>Posto</th><th>CPF</th><th>E-mail</th><th>Data</th><th>Ações</th></tr></thead>
+                <tbody id="retiradasTabela"></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="relatorios" class="view">
+        <article class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">RF12</p>
+            <h2>Consultar registros de itens por posto de apoio</h2>
+          </div>
+          <div class="filters report-filter">
+            <label>Posto de apoio<select id="relatorioPosto"></select></label>
+            <button id="btnGerarRelatorio" class="btn primary" type="button">Gerar relatório</button>
+          </div>
+          <div id="relatorioResumo" class="report-summary"></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Descrição</th><th>Categoria</th><th>Status</th><th>Data de registro</th></tr></thead>
+              <tbody id="relatorioTabela"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
