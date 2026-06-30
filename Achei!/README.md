@@ -54,9 +54,9 @@ python -m http.server 5500
 Depois acesse:
 
 ```text
-http://127.0.0.1:5500
-ou diretamente o arquivo `frontend/index.html`
+http://127.0.0.1:5500`
 ```
+Ou diretamente pelo arquivo `frontend/index.html`
 
 ## Permissões por perfil
 
