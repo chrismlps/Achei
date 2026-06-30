@@ -296,15 +296,13 @@ Essa prática ajuda a diferenciar valores fixos de variáveis comuns, facilitand
 | Tecnologia | Versão | Finalidade |
 |---|---|---|
 | Python | 3.13.13 | Linguagem de programação principal |
-| Flask | 3.1.3 | Framework web: rotas, templates, requisições HTTP |
-| SQLAlchemy | 2.0.43 | ORM — mapeamento objeto-relacional com o banco de dados |
+| FastAPI | 3.1.3 | Framework web: rotas, templates, requisições HTTP |
 
 ### Banco de Dados
 
 | Tecnologia | Versão | Finalidade |
 |---|---|---|
 | SQLite | 3.53.2 | Banco de dados em desenvolvimento (arquivo local, sem servidor) |
-| PostgreSQL | 18.4 | Banco de dados em produção / apresentação |
 
 ### Outras
 
